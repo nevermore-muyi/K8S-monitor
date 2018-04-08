@@ -17,7 +17,7 @@ K8S集群搭建完成，服务均正常运行
 #### 1.Prometheus 安装
 
 ```
-进入官网https://prometheus.io/download/，解压
+进入官网https://prometheus.io/download/，下载解压
 配置文件，即配置每个job的metric数据源
 启动，可以直接使用./prometheus启动或者使用nohup ./prometheus &启动
 默认启动端口为9090，输入ip：port的形式访问，查看是否安装成功
@@ -47,14 +47,12 @@ Grafana默认的dashboards显示不健全，可以下载和K8S比较匹配的das
 global:
   scrape_interval:     10s
   evaluation_interval: 10s
-
 scrape_configs:
   - job_name: node
     static_configs:
       - targets: ['172.20.0.63:9100','172.20.0.99:9100','172.20.0.102:9100','172.20.0.131:9100']
         labels:
           instance: node
-
   - job_name: kubernetes-nodes-cadvisor
     static_configs:
       - targets: ['172.20.0.63:4194','172.20.0.99:4194', '172.20.0.102:4194', '172.20.0.131:4194']
@@ -81,6 +79,41 @@ scrape_configs:
 
 
 ### 二、Prometheus 容器方式
+
+#### 1.安装Prometheus 
+
+```
+1.创建命名空间monitoring
+kubectl create -f namespace.yaml
+2.创建权限
+kubectl create -f rbac.yaml
+2.创建 node-exporter
+kubectl create -f prometheus-node-exporter-daemonset.yaml
+kubectl create -f prometheus-node-exporter-service.yaml
+3.创建 kube-state-metrics
+kubectl create -f kube-state-metrics-deployment.yaml
+kubectl create -f kube-state-metrics-service.yaml
+4.创建 node-directory-size-metrics
+kubectl create -f node-directory-size-metrics-daemonset.yaml
+5.创建 prometheus
+kubectl create -f prometheus-core-configmap.yaml
+kubectl create -f prometheus-core-deployment.yaml
+kubectl create -f prometheus-core-service.yaml
+kubectl create -f prometheus-rules-configmap.yaml
+```
+
+#### 2.安装Grafana
+
+```
+1.安装grafana service
+kubectl create -f grafana-svc.yaml
+2.导入configmap
+kubectl create configmap "grafana-etc" --from-file=grafana.ini --namespace=monitoring
+3.创建gragana deployment
+kubectl create -f grafana-deployment.yaml
+```
+
+
 
 ### 三、EFK（Elasticsearch + Fluentd + Kibana）
 
