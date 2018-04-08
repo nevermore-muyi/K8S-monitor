@@ -86,6 +86,8 @@ scrape_configs:
 
 ```
 EFK的安装方式参考 https://github.com/gjmzj/kubeasz/tree/master/manifests/efk，唯一需要注意的是Docker启动方式中，log-driver需要改成json-file的格式。
+另外，安装Fluentd的时候，需要设置label，
+kubectl label nodes XXXX beta.kubernetes.io/fluentd-ds-ready=true
 ```
 
 
@@ -95,6 +97,8 @@ EFK的安装方式参考 https://github.com/gjmzj/kubeasz/tree/master/manifests/
 https://www.cnblogs.com/163yun/p/7716253.html
 
 https://www.cnblogs.com/sfnz/p/6566951.html
+
+https://blog.csdn.net/wenwst/article/details/76624019
 
 https://prometheus.io/docs/
 
