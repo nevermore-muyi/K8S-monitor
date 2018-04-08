@@ -82,7 +82,7 @@ scrape_configs:
 
 ### 二、Prometheus 容器方式
 
-### 三、EFK（Elaticsearch + Fluentd + Kibana）
+### 三、EFK（Elasticsearch + Fluentd + Kibana）
 
 ```
 EFK的安装方式参考 https://github.com/gjmzj/kubeasz/tree/master/manifests/efk，唯一需要注意的是Docker启动方式中，log-driver需要改成json-file的格式。
