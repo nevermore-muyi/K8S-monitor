@@ -36,11 +36,11 @@ systemctl start grafana-server，至此安装完成
 #### 3.使用
 
 ```
-1.进入Grafana，默认Grafana端口为3000，默认用户名密码是admin/admin,Data Sources配置数据源，将Prometheus的http地址加载到数据源中；
+1.进入Grafana，默认Grafana端口为3000，默认用户名密码是admin/admin,配置Data Sources数据源，将Prometheus的http地址加载到数据源中；
 2.替换dashboards
 Grafana默认的dashboards显示不健全，可以下载和K8S比较匹配的dashboard
-下载模版https://grafana.com/dashboards/315，导入到Grafana内，并修改Prometheus的yml配置，如下所示
-3.重新启动Grafana，systemctl restart grafana-server
+下载模版https://grafana.com/dashboards/315，导入到Grafana内，并修改Prometheus的yml配置
+3.重新启动Grafana，systemctl restart grafana-server，以下是修改后的Prometheus的配置
 ```
 
 ```
