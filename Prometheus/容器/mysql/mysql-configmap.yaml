@@ -1,0 +1,11 @@
+apiVersion: v1
+data:
+  mysql.cnf: |
+    [client]
+    user=root
+    password=asd9577    
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: mysql-exporter
+  namespace: monitoring
