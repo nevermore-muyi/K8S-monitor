@@ -1,0 +1,25 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: redis-exporter
+  namespace: monitoring
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: redis-exporter
+    spec:
+      serviceAccountName: redis-exporter
+      containers:
+      - name: redis-exporter
+        image: docker.io/anchorfree/redis-exporter:master
+        ports:
+        - containerPort: 9121
+        volumeMounts:
+        - name: config-volume
+          mountPath: /usr/bin/
+      volumes:
+      - name: config-volume
+        configMap:
+          name: redis-exporter
