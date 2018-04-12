@@ -13,15 +13,21 @@ spec:
       serviceAccountName: mysql-exporter
       containers:
       - name: mysql-exporter
-        image: docker.io/jfusterm/mysqld-exporter
+        image: registry.cn-hangzhou.aliyuncs.com/nevermore/mysql-exporter:v1
         ports:
         - containerPort: 9104
-        command: ["mysqld_exporter"]
-        args: ["-config.my-cnf="/tmp/mysql/mysql.cnf""]  #修改配置
-        volumeMounts:
-          - name: config-volume
-          mountPath: /tmp/mysql
-      volumes:
-        - name: config-volume
-          configMap:
-            name: mysql-exporter
+        # command: ["mysqld_exporter"]
+        # args: ["-config.my-cnf=\"/tmp/mysql/mysql.cnf\""]  #修改配置
+      #   volumeMounts:
+      #     - name: config-volume
+      #       mountPath: /tmp/mysql
+      # volumes:
+      #   - name: config-volume
+      #     configMap:
+      #       name: mysql-exporter
+        env:
+        - name: DATA_SOURCE_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: mysql-exporter
+              key: source
