@@ -47,7 +47,8 @@ spec:
         volumeMounts:
         - name: grafana-etc-volume
           mountPath: /etc/grafana/
-          #readOnly: true
+        - name: grafana-dashboards
+          mountPath: /var/lib/grafana/dashboards
       volumes:
         - name: grafana-etc-volume
           configMap:
@@ -55,3 +56,6 @@ spec:
             items:
             - key: grafana.ini
               path: grafana.ini
+        - name: grafana-dashboards
+          configMap:
+            name: grafana-dashboards
