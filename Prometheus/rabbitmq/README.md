@@ -11,7 +11,7 @@ PUBLISH_PORT为Pod内部端口号，9090
 
 ```
 2.修改Prometheus配置
-参考rabbitmqs-core-configmap.yaml配置文件，与普通配置的区别在于添加了
+参考rabbitmq-core-configmap.yaml配置文件，与普通配置的区别在于添加了
 - job_name: 'rabbitmq_exporter' 
   static_configs:
   - targets: ['rabbitmq-exporter:9099']

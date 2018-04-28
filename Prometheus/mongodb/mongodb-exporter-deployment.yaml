@@ -13,11 +13,9 @@ spec:
       serviceAccountName: mongodb-exporter
       containers:
       - name: mongodb-exporter
-        image: hypoport/prometheus-mongodb-exporter
+        image: registry.cn-hangzhou.aliyuncs.com/nevermore/mongodb-exporter:v1
         ports:
-        - containerPort: 9216
+        - containerPort: 9001
         env:
           - name: MONGODB_URL
-            value: "mongodb://nevermore:nevermore@mongos-svc.default:27017"               #修改成mongodb地址
-          - name: HTTP_AUTH
-            value: "root:oasis-rd@h3c"                                #修改用户名
+            value: "mongodb://nevermore:nevermore@config-rc-0.config-svc.default:27017"               #修改成mongodb地址
