@@ -20,8 +20,8 @@ spec:
           - name: RABBIT_URL
             value: "http://rabbitmq-svc.default:15672"  #修改成rabbitmq地址
           - name: RABBIT_USER
-            value: "o2o"                                #修改用户名
+            value: "guest"                                #修改用户名
           - name: RABBIT_PASSWORD
-            value: "o2o"                                #修改密码
+            value: "guest"                                #修改密码
           - name: PUBLISH_PORT
             value: "9090"                               #端口号9090
