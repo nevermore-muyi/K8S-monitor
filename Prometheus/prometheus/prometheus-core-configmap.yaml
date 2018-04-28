@@ -135,6 +135,11 @@ data:
         - source_labels: [__meta_kubernetes_pod_name]
           action: replace
           target_label: kubernetes_pod_name
+
+      - job_name: 'etcd'
+        static_configs:
+        - targets: ['172.20.0.97:2379', '172.20.0.112:2379', '172.20.0.143:2379', '172.20.0.144:2379', '172.20.0.150:2379'] #替换成etcd地址
+
 kind: ConfigMap
 metadata:
   creationTimestamp: null
