@@ -10,8 +10,8 @@ metadata:
 spec:
   ports:
   - name: rabbitmq-exporter
-    port: 9090
-    containerPort: 9099
+    port: 9099
+    targetPort: 9090
     protocol: TCP
   selector:
     app: rabbitmq-exporter
