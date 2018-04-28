@@ -1,0 +1,27 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: rabbitmq-exporter
+  namespace: monitoring
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: rabbitmq-exporter
+    spec:
+      serviceAccountName: rabbitmq-exporter
+      containers:
+      - name: rabbitmq-exporter
+        image: kbudde/rabbitmq-exporter
+        ports:
+        - containerPort: 9099
+        env:
+          - name: RABBIT_URL
+            value: "http://rabbitmq-svc:15672"
+          - name: RABBIT_USER
+            value: "o2o"
+          - name: RABBIT_PASSWORD
+            value: "o2o"
+          - name: PUBLISH_PORT
+            value: "9090"
