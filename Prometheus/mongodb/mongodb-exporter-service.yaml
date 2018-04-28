@@ -11,7 +11,7 @@ spec:
   ports:
   - name: mongodb-exporter
     port: 9104
-    targetPort: 9090
+    targetPort: 9216
     protocol: TCP
   selector:
     app: mongodb-exporter

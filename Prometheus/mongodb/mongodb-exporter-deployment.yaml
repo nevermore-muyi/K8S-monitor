@@ -15,9 +15,9 @@ spec:
       - name: mongodb-exporter
         image: hypoport/prometheus-mongodb-exporter
         ports:
-        - containerPort: 9090
+        - containerPort: 9216
         env:
           - name: MONGODB_URL
-            value: "mongodb://root:psw@mongos-svc.default:27017"               #修改成mongodb地址
+            value: "mongodb://nevermore:nevermore@mongos-svc.default:27017"               #修改成mongodb地址
           - name: HTTP_AUTH
             value: "root:oasis-rd@h3c"                                #修改用户名
