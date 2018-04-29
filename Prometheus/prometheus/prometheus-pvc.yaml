@@ -1,0 +1,11 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: prometheus-storage
+spec:
+  storageClassName: fast
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 2Gi
