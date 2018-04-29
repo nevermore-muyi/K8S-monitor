@@ -64,6 +64,8 @@ spec:
         volumeMounts:
         - name: metrics
           mountPath: /var/www
+        - name: sys-time
+          mountPath: /etc/localtime
       volumes:
       - name: host-fs-var
         hostPath:
@@ -72,5 +74,5 @@ spec:
         emptyDir:
           medium: Memory
       - name: sys-time
-          hostPath:
-            path: /etc/localtime
+        hostPath:
+          path: /etc/localtime

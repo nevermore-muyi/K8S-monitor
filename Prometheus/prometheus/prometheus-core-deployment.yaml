@@ -54,5 +54,5 @@ spec:
         persistentVolumeClaim:
           claimName: prometheus-storage
       - name: sys-time
-          hostPath:
-            path: /etc/localtime
+        hostPath:
+          path: /etc/localtime

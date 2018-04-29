@@ -13,7 +13,7 @@ spec:
       serviceAccountName: redis-exporter
       containers:
       - name: redis-exporter
-        image: registry.cn-hangzhou.aliyuncs.com/nevermore/redis-exporter
+        image: registry.cn-hangzhou.aliyuncs.com/nevermore/redis-exporter:v1
         ports:
         - containerPort: 9121
         command: ["/bin/redis_exporter"]

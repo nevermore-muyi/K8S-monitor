@@ -14,11 +14,11 @@ spec:
       containers:
       - name: alertmanager
         image: prom/alertmanager
-        ports:
-        - containerPort: 9093
         volumeMounts:
         - name: sys-time
           mountPath: /etc/localtime
+        ports:
+        - containerPort: 9093
       volumes:
         - name: sys-time
           hostPath:
