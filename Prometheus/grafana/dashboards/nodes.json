@@ -2613,6 +2613,6 @@
         "type": "timepicker"
     },
     "timezone": "browser",
-    "title": "System Overview",
+    "title": "Nodes",
     "version": 4
 }
