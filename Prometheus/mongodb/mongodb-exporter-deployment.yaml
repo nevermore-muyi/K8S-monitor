@@ -19,3 +19,10 @@ spec:
         env:
           - name: MONGODB_URL
             value: "mongodb://nevermore:nevermore@config-rc-0.config-svc.default:27017"               #修改成mongodb地址
+        volumeMounts:
+        - name: sys-time
+          mountPath: /etc/localtime
+      volumes:
+        - name: sys-time
+          hostPath:
+            path: /etc/localtime

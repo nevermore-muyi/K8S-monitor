@@ -25,3 +25,10 @@ spec:
             value: "guest"                                #修改密码
           - name: PUBLISH_PORT
             value: "9090"                               #端口号9090
+        volumeMounts:
+        - name: sys-time
+          mountPath: /etc/localtime
+      volumes:
+        - name: sys-time
+          hostPath:
+            path: /etc/localtime

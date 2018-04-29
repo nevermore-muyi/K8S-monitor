@@ -22,3 +22,10 @@ spec:
             configMapKeyRef:
               name: mysql-exporter
               key: source
+        volumeMounts:
+        - name: sys-time
+          mountPath: /etc/localtime
+      volumes:
+        - name: sys-time
+          hostPath:
+            path: /etc/localtime

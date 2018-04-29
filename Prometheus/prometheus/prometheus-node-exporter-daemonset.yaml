@@ -22,5 +22,12 @@ spec:
           #^ must be an IANA_SVC_NAME (at most 15 characters, ..)
           containerPort: 9100
           hostPort: 9100
+        volumeMounts:
+        - name: sys-time
+          mountPath: /etc/localtime
+      volumes:
+        - name: sys-time
+          hostPath:
+            path: /etc/localtime
       hostNetwork: true
       hostPID: true

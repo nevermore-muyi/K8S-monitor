@@ -41,6 +41,8 @@ spec:
           mountPath: /etc/prometheus-rules
         - name: prometheus-data
           mountPath: /prometheus/data
+        - name: sys-time
+          mountPath: /etc/localtime
       volumes:
       - name: config-volume
         configMap:
@@ -51,3 +53,6 @@ spec:
       - name: prometheus-data
         persistentVolumeClaim:
           claimName: prometheus-storage
+      - name: sys-time
+          hostPath:
+            path: /etc/localtime

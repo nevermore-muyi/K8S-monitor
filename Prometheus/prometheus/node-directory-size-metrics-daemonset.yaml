@@ -51,6 +51,8 @@ spec:
           readOnly: true
         - name: metrics
           mountPath: /tmp
+        - name: sys-time
+          mountPath: /etc/localtime
       - name: caddy
         image: dockermuenster/caddy:0.9.3
         command:
@@ -69,3 +71,6 @@ spec:
       - name: metrics
         emptyDir:
           medium: Memory
+      - name: sys-time
+          hostPath:
+            path: /etc/localtime

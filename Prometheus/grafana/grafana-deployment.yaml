@@ -49,6 +49,10 @@ spec:
           mountPath: /etc/grafana/
         - name: grafana-dashboards
           mountPath: /var/lib/grafana/dashboards
+        - name: grafana-settings
+          mountPath: /var/lib/grafana
+        - name: sys-time
+          mountPath: /etc/localtime
       volumes:
         - name: grafana-etc-volume
           configMap:
@@ -56,6 +60,12 @@ spec:
             items:
             - key: grafana.ini
               path: grafana.ini
+        - name: grafana-settings
+          persistentVolumeClaim:
+            claimName: grafana-storage
         - name: grafana-dashboards
           configMap:
             name: grafana-dashboards
+        - name: sys-time
+          hostPath:
+            path: /etc/localtime
