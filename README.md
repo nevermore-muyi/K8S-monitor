@@ -30,6 +30,7 @@ kubectl create -f kube-state-metrics-service.yaml
 4.创建 node-directory-size-metrics
 kubectl create -f node-directory-size-metrics-daemonset.yaml
 5.创建 prometheus
+kubectl create -f prometheus-pvc.yaml
 kubectl create -f prometheus-core-configmap.yaml
 kubectl create -f prometheus-core-deployment.yaml
 kubectl create -f prometheus-core-service.yaml
@@ -43,8 +44,9 @@ kubectl create -f prometheus-rules-configmap.yaml
 kubectl create -f grafana-svc.yaml
 2.导入configmap
 kubectl create configmap "grafana-etc" --from-file=grafana.ini --namespace=monitoring
-kubectl create configmap "grafana-dashboards" --from-file=dashboards/ --namespace=monitoring
-3.创建gragana deployment
+3.创建pvc
+kubectl create -f grafana-pvc.yaml
+4.创建gragana deployment
 kubectl create -f grafana-deployment.yaml
 ```
 
