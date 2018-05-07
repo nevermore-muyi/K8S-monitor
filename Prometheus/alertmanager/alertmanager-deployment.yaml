@@ -13,7 +13,7 @@ spec:
       serviceAccountName: alertmanager
       containers:
       - name: alertmanager
-        image: prom/alertmanager
+        image: prom/alertmanager:v0.14.0
         volumeMounts:
         - name: sys-time
           mountPath: /etc/localtime

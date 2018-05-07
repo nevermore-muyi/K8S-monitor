@@ -5,6 +5,10 @@ data:
       scrape_interval: 10s
       scrape_timeout: 10s
       evaluation_interval: 10s
+    alerting:
+      alertmanagers:
+      - static_configs:
+        - targets: ['alertmanager:9093']
     rule_files:
       - "/etc/prometheus-rules/*.rules"
     scrape_configs:
