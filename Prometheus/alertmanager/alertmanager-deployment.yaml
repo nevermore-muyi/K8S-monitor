@@ -15,6 +15,8 @@ spec:
       - name: alertmanager
         image: prom/alertmanager:v0.14.0
         volumeMounts:
+        - name: config-volume
+          mountPath: /etc/alertmanager
         - name: sys-time
           mountPath: /etc/localtime
         ports:
@@ -23,3 +25,6 @@ spec:
         - name: sys-time
           hostPath:
             path: /etc/localtime
+        - name: config-volume
+          configMap:
+            name: alertmanager-rules
