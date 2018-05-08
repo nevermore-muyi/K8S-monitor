@@ -5,7 +5,7 @@ data:
     - name: NodeCPUUsage
       rules:
       - alert: NodeCPUUsage
-        expr: (100 - (avg by (instance) (irate(node_cpu{name="node-exporter",mode="idle"}[5m])) * 100)) > 75
+        expr: (100 - (avg by (instance) (irate(node_cpu{component="node-exporter",mode="idle"}[5m])) * 100)) > 75
         for: 2m
         labels:
           severity: page
@@ -13,18 +13,39 @@ data:
           summary: "{{$labels.instance}}: High CPU usage detected"
           description: "{{$labels.instance}}: CPU usage is above 75% (current value is: {{ $value }})"
 
+  mem-usage.rules: |
+    groups:
+    - name: NodeMemoryUsage
+      rules:
+      - alert: NodeSwapUsage
+        expr: (((node_memory_SwapTotal-node_memory_SwapFree)/node_memory_SwapTotal)*100) > 75
+        for: 2m
+        labels:
+          severity: page
+        annotations:
+          summary: "{{$labels.instance}}: Swap usage detected"
+          description: "{{$labels.instance}}: Swap usage usage is above 75% (current value is: {{ $value }})"
+      - alert: NodeMemoryUsage
+        expr: (((node_memory_MemTotal-node_memory_MemFree-node_memory_Cached)/(node_memory_MemTotal)*100)) > 75
+        for: 2m
+        labels:
+          severity: page
+        annotations:
+          summary: "{{$labels.instance}}: High memory usage detected"
+          description: "{{$labels.instance}}: Memory usage is above 75% (current value is: {{ $value }})"
+
   instance-availability.rules: |
     groups:
     - name: InstanceDown
       rules:
-      - alert: NodeCPUUsage
+      - alert: InstanceDown
         expr: up == 0
-        for: 1m
+        for: 2m
         labels:
           severity: page
         annotations:
           summary: "Instance {{ $labels.instance }} down"
-          description: "{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 1 minute."
+          description: "{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 2 minute."
 
   low-disk-space.rules: |
     groups:
@@ -47,26 +68,7 @@ data:
           summary: "{{$labels.instance}}: Low data disk space"
           description: "{{$labels.instance}}: Data disk usage is above 75% (current value is: {{ $value }})"
 
-  mem-usage.rules: |
-    groups:
-    - name: NodeSwapUsage
-      rules:
-      - alert: NodeSwapUsage
-        expr: (((node_memory_SwapTotal-node_memory_SwapFree)/node_memory_SwapTotal)*100) > 75
-        for: 2m
-        labels:
-          severity: page
-        annotations:
-          summary: "{{$labels.instance}}: Swap usage detected"
-          description: "{{$labels.instance}}: Swap usage usage is above 75% (current value is: {{ $value }})"
-      - alert: NodeMemoryUsage
-        expr: (((node_memory_MemTotal-node_memory_MemFree-node_memory_Cached)/(node_memory_MemTotal)*100)) > 75
-        for: 2m
-        labels:
-          severity: page
-        annotations:
-          summary: "{{$labels.instance}}: High memory usage detected"
-          description: "{{$labels.instance}}: Memory usage is above 75% (current value is: {{ $value }})"
+  
 kind: ConfigMap
 metadata:
   creationTimestamp: null
