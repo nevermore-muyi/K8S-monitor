@@ -42,8 +42,8 @@ kubectl create -f prometheus-rules-configmap.yaml
 ```
 1.安装grafana service
 kubectl create -f grafana-svc.yaml
-2.导入configmap
-kubectl create configmap "grafana-etc" --from-file=grafana.ini --namespace=monitoring
+2.创建configmap
+kubectl create -f grafana-configmap.yaml
 3.创建pvc
 kubectl create -f grafana-pvc.yaml
 4.创建gragana deployment

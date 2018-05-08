@@ -55,9 +55,6 @@ spec:
         - name: grafana-etc-volume
           configMap:
             name: grafana-etc
-            items:
-            - key: grafana.ini
-              path: grafana.ini
         - name: grafana-settings
           persistentVolumeClaim:
             claimName: grafana-storage
