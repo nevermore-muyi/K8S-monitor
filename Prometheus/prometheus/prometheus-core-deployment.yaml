@@ -21,6 +21,7 @@ spec:
         image: prom/prometheus:v2.2.1
         args:
           - '--config.file=/etc/prometheus/prometheus.yaml'
+          - '--storage.tsdb.retention=7d'
         ports:
         - name: webui
           containerPort: 9090
