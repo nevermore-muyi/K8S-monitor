@@ -1250,7 +1250,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "(rate(node_disk_io_time_ms{instance=~\"shr.*\"}[5m])/1000 or irate(node_disk_io_time_ms{instance=~\"shr.*\"}[5m])/1000)",
+              "expr": "(rate(node_disk_io_time_ms{instance=\"$host\"}[5m])/1000 or irate(node_disk_io_time_ms{instance=\"$host\"}[5m])/1000)",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 2,
@@ -1347,7 +1347,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "rate(node_disk_reads_completed{instance=~\"shr.*\"}[5m])",
+              "expr": "rate(node_disk_reads_completed{instance=\"$host\"}[5m])",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "{{device}} - {{instance}}",
@@ -1423,7 +1423,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "rate(node_disk_writes_completed{instance=~\"shr.*\"}[5m])",
+              "expr": "rate(node_disk_writes_completed{instance=\"$host\"}[5m])",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "{{device}} - {{instance}}",
@@ -1574,7 +1574,30 @@
         "query": "1m,10m,30m,1h,6h,12h,1d,7d,14d,30d",
         "refresh": 2,
         "type": "interval"
-      }
+      },
+      {
+        "allFormat": "glob",
+        "allValue": null,
+        "current": {},
+        "datasource": "Prometheus",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Host",
+        "multi": false,
+        "multiFormat": "regex values",
+        "name": "host",
+        "options": [],
+        "query": "label_values(node_load1, instance)",
+        "refresh": 1,
+        "refresh_on_load": false,
+        "regex": "",
+        "sort": 1,
+        "tagValuesQuery": "instance",
+        "tags": [],
+        "tagsQuery": "up",
+        "type": "query",
+        "useTags": false
+    }
     ]
   },
   "time": {
