@@ -105,7 +105,7 @@
           },
           "targets": [
             {
-              "expr": "rabbitmq_up",
+              "expr": "rabbitmq_up{app=\"rabbitmq-exporter\"}",
               "intervalFactor": 2,
               "metric": "rabbitmq_up",
               "refId": "A",
