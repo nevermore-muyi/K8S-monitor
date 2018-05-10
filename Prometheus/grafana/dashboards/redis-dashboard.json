@@ -112,7 +112,7 @@
           },
           "targets": [
             {
-              "expr": "redis_uptime_in_seconds{addr=\"$addr\"}",
+              "expr": "redis_uptime_in_seconds{instance=\"redis-exporter:9121\"}",
               "intervalFactor": 2,
               "legendFormat": "",
               "metric": "",
@@ -193,7 +193,7 @@
           },
           "targets": [
             {
-              "expr": "redis_connected_clients{addr=\"$addr\"}",
+              "expr": "redis_connected_clients{instance=\"redis-exporter:9121\"}",
               "intervalFactor": 2,
               "legendFormat": "",
               "metric": "",
