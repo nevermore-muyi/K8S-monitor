@@ -48,6 +48,10 @@ kubectl create -f grafana-configmap.yaml
 kubectl create -f grafana-pvc.yaml
 4.创建gragana deployment
 kubectl create -f grafana-deployment.yaml
+5.创建dashboard configmap
+kubectl create configmap "grafana-import-dashboards" --from-file=dashboards/ --namespace=monitoring
+6.创建job，导入dashboard等数据
+ kubectl create -f grafana-job.yaml
 ```
 
 
@@ -79,4 +83,6 @@ https://grafana.com
 https://grafana.com/dashboards
 
 https://github.com/gjmzj/kubeasz
+
+https://github.com/giantswarm/kubernetes-prometheus
 
