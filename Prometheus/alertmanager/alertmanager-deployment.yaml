@@ -17,6 +17,8 @@ spec:
         volumeMounts:
         - name: config-volume
           mountPath: /etc/alertmanager
+        - name: config-tmpl
+          mountPath: /etc/alerttemplate
         - name: sys-time
           mountPath: /etc/localtime
         ports:
@@ -28,3 +30,6 @@ spec:
         - name: config-volume
           configMap:
             name: alertmanager-rules
+        - name: config-tmpl
+          configMap:
+            name: alertmanager-tmpl
