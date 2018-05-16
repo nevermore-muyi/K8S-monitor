@@ -86,3 +86,6 @@ https://github.com/gjmzj/kubeasz
 
 https://github.com/giantswarm/kubernetes-prometheus
 
+http://blog.51cto.com/xujpxm/2055970
+
+http://yunlzheng.github.io/2018/03/12/prometheus-alertmanager-ha/
