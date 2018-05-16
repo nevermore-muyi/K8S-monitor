@@ -33,12 +33,12 @@ data:
 
       # When the first notification was sent, wait 'group_interval' to send a batch
       # of new alerts that started firing for that group.
-      # 初次报警发送完成，等待多长时间继续发送同组产生的报警
+      # 初次报警发送完成，如果有新的警报过来，间隔时间发送；如果警报还是旧的，等待repeat_interval时间
       group_interval: 5m
 
       # If an alert has successfully been sent, wait 'repeat_interval' to
       # resend them.
-      # 警报已经发送，间隔多长时间再重复发送
+      # 警报已经发送，间隔多长时间如果还在，继续发送相同警报
       repeat_interval: 3h 
 
       # A default receiver
