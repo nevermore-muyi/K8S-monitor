@@ -1,3 +1,0 @@
-- job_name: 'mysql_exporter' 
-  static_configs:
-  - targets: ['mysql-exporter:9104']
