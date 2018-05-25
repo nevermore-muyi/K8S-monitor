@@ -112,7 +112,7 @@
           },
           "targets": [
             {
-              "expr": "redis_uptime_in_seconds{instance=\"redis-exporter:9121\"}",
+              "expr": "redis_uptime_in_seconds{instance=\"$host\"}",
               "intervalFactor": 2,
               "legendFormat": "",
               "metric": "",
@@ -193,7 +193,7 @@
           },
           "targets": [
             {
-              "expr": "redis_connected_clients{instance=\"redis-exporter:9121\"}",
+              "expr": "redis_connected_clients{instance=\"$host\"}",
               "intervalFactor": 2,
               "legendFormat": "",
               "metric": "",
@@ -1056,7 +1056,30 @@
         "refresh": 1,
         "regex": "",
         "type": "query"
-      }
+      },
+      {
+        "allFormat": "glob",
+        "allValue": null,
+        "current": {},
+        "datasource": "Prometheus",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Host",
+        "multi": false,
+        "multiFormat": "regex values",
+        "name": "host",
+        "options": [],
+        "query": "label_values(redis_up, instance)",
+        "refresh": 1,
+        "refresh_on_load": false,
+        "regex": "",
+        "sort": 1,
+        "tagValuesQuery": null,
+        "tags": [],
+        "tagsQuery": null,
+        "type": "query",
+        "useTags": false
+    }
     ]
   },
   "annotations": {
